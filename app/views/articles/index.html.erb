@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Articles</h1>
+
+    <% @articles.each do |article| %>
+      <div class="blog_post">
+        <h2><a href="<%= article_path(article) %>"><%= article.title %></a></h2>
+        <p><%= article.message %></p>
+        <p>
+            <%= link_to 'Edit', edit_article_path(article) %> | 
+            <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </p>
+      </div>
+    <% end %>
+<br>
+
+<%= link_to 'New Article', new_article_path %>
+
+<div style="background: #16a085;padding: 10px;" class="pagination_div">
+    <%= paginate @articles %>
+</div>
